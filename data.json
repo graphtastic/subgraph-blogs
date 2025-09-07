@@ -1,0 +1,51 @@
+{
+  "authors": [
+    {
+      "id": "101",
+      "name": "Ada Lovelace",
+      "age": 36,
+      "description": "Pioneer of computer programming and analytical engines."
+    },
+    {
+      "id": "102",
+      "name": "Grace Hopper",
+      "age": 85,
+      "description": "Inventor of the first compiler and COBOL language."
+    },
+    {
+      "id": "103",
+      "name": "Alan Turing",
+      "age": 41,
+      "description": "Mathematician, logician, and codebreaker."
+    },
+    {
+      "id": "104",
+      "name": "Margaret Hamilton",
+      "age": 88,
+      "description": "Led the software team for Apollo 11."
+    },
+    {
+      "id": "105",
+      "name": "Donald Knuth",
+      "age": 86,
+      "description": "Author of The Art of Computer Programming."
+    }
+  ],
+  "blogs": [
+    { "id": "1", "title": "The Poetry of Code", "labels": ["history", "inspiration"], "authorId": "101" },
+    { "id": "2", "title": "Analytical Engines Explained", "labels": ["math", "technology"], "authorId": "101" },
+    { "id": "3", "title": "Women in Computing", "labels": ["diversity", "history"], "authorId": "101" },
+    { "id": "4", "title": "Debugging the Impossible", "labels": ["debugging", "history"], "authorId": "102" },
+    { "id": "5", "title": "COBOL: Still Running", "labels": ["legacy", "languages"], "authorId": "102" },
+    { "id": "6", "title": "The First Compiler", "labels": ["innovation", "tools"], "authorId": "102" },
+    { "id": "7", "title": "Cracking the Enigma", "labels": ["cryptography", "history"], "authorId": "103" },
+    { "id": "8", "title": "Turing Machines 101", "labels": ["theory", "machines"], "authorId": "103" },
+    { "id": "9", "title": "AI: Dream or Reality?", "labels": ["ai", "philosophy"], "authorId": "103" },
+    { "id": "10", "title": "To the Moon and Back", "labels": ["space", "software"], "authorId": "104" },
+    { "id": "11", "title": "Software That Saved Apollo", "labels": ["reliability", "engineering"], "authorId": "104" },
+    { "id": "12", "title": "Leadership in STEM", "labels": ["leadership", "stem"], "authorId": "104" },
+    { "id": "13", "title": "The Art of Algorithms", "labels": ["algorithms", "books"], "authorId": "105" },
+    { "id": "14", "title": "Typesetting with TeX", "labels": ["typesetting", "tools"], "authorId": "105" },
+    { "id": "15", "title": "Fun with Math Puzzles", "labels": ["math", "puzzles"], "authorId": "105" }
+  ]
+}

@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  blogs-service:
+    build: .
+    ports: ["${SUBGRAPH_BLOGS_PORT:-4001}:4001"]
+    networks: [graphtastic_net]
+networks:
+  graphtastic_net:
+    name: ${SHARED_NETWORK_NAME:-graphtastic_net}
+    external: ${SHARED_NETWORK_EXTERNAL:-false}
