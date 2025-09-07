@@ -2,7 +2,10 @@
   "name": "subgraph-blogs",
   "type": "module",
   "dependencies": {
+    "@apollo/subgraph": "^2.11.2",
+    "@envelop/apollo-federation": "^7.0.0",
     "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6",
     "graphql-yoga": "^5.1.1"
   }
 }

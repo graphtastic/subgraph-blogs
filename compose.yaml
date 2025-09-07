@@ -7,4 +7,4 @@ services:
 networks:
   graphtastic_net:
     name: ${SHARED_NETWORK_NAME:-graphtastic_net}
-    external: true
+    external: ${SHARED_NETWORK_EXTERNAL:-false}
