@@ -87,11 +87,22 @@ query {
 }
 ```
 
+
 ## Scripts
 - `npm start` — Start the server
 - `npm run dev` — Start with auto-reload (nodemon)
 - `npm test` — Run API tests
 - `npm run test:watch` — Run tests in watch mode
+
+## Running GitHub Actions Locally
+You can run the CI workflow locally using [`act`](https://github.com/nektos/act):
+
+1. Install act (see [act install guide](https://github.com/nektos/act#installation))
+2. From the project root, run:
+	```sh
+	act pull_request
+	```
+	This will execute the GitHub Actions workflow as if you opened a PR against `main`.
 
 ## Customization
 - Edit `data.json` to add or modify authors and blogs
