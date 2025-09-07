@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
+  "dev": "YOGA_DEBUG=* nodemon index.js",
     "build": "echo 'No build step for plain JS. Use TypeScript for builds.'",
     "test": "jest",
     "test:watch": "jest --watchAll"

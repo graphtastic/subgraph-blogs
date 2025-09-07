@@ -1,3 +1,5 @@
+// Enable verbose Yoga logging if YOGA_DEBUG is set
+if (process.env.YOGA_DEBUG) process.env.DEBUG = process.env.YOGA_DEBUG;
 import { createServer } from 'node:http';
 import { createYoga } from 'graphql-yoga';
 
@@ -63,18 +65,35 @@ const resolvers = {
 // Build the schema with federation support
 const schema = buildSubgraphSchema([{ typeDefs, resolvers }]);
 
-// Add logging plugin for Yoga
+// Add logging plugin for Yoga to log every incoming GraphQL query and variables
 const yoga = createYoga({
   schema,
   plugins: [
     {
+      async onRequest({ request }) {
+        if (request.method === 'POST' && request.headers.get('content-type')?.includes('application/json')) {
+          try {
+            const body = await request.json();
+            console.info('--- Incoming GraphQL Request ---');
+            if (body.operationName) console.info('Operation:', body.operationName);
+            if (body.query) console.info('Query:', body.query);
+            if (body.variables) console.info('Variables:', body.variables);
+            console.info('-------------------------------');
+          } catch (e) {
+            // Ignore parse errors
+          }
+        }
+      },
       onExecute({ args }) {
+        // Fallback logging for non-JSON or GET requests
         const { document, variableValues, operationName } = args;
-        console.info('--- Incoming GraphQL Request ---');
-        console.info('Operation:', operationName);
-        console.info('Query:', document && document.loc && document.loc.source.body);
-        console.info('Variables:', variableValues);
-        console.info('-------------------------------');
+        if (document) {
+          console.info('--- Incoming GraphQL Request (onExecute) ---');
+          if (operationName) console.info('Operation:', operationName);
+          if (document.loc && document.loc.source.body) console.info('Query:', document.loc.source.body);
+          if (variableValues) console.info('Variables:', variableValues);
+          console.info('-------------------------------');
+        }
       }
     }
   ]
