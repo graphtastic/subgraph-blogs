@@ -9,9 +9,58 @@ import fs from 'fs';
 import path from 'path';
 
 // Load schema from file
+// ---------------------
+//
+// from schema.graphql:
+//
+// type Query {
+//   blogs: [Blog!]
+//   blog(id: ID!): Blog
+//   authors: [Author!]
+//   author(id: ID!): Author
+// }
+
+// type Blog @key(fields: "id") {
+//   id: ID!
+//   title: String!
+//   labels: [String!]!
+//   author: Author
+// }
+
+// type Author @key(fields: "id") @extends {
+//   id: ID! @external
+//   name: String!
+//   age: Int!
+//   description: String!
+//   blogs: [Blog!]!
+// }
 const typeDefs = gql(fs.readFileSync(path.join(process.cwd(), 'schema.graphql'), 'utf8'));
 
-// Load authors and blogs as separate arrays from data.json
+// Load data from file
+// ---------------------
+//
+// from data.json:
+//
+// {
+//   "authors": [
+//     {
+//       "id": "101",
+//       "name": "Ada Lovelace",
+//       "age": 37,
+//       "description": "Pioneer of computer programming and analytical engines."
+//     },
+//
+//   ... (more authors) ...
+//
+//   ],
+//   "blogs": [
+//     { "id": "1", "title": "The Poetry of Code", "labels": ["history", "inspiration"], "authorId": "101" },
+//     { "id": "2", "title": "Analytical Engines Explained", "labels": ["math", "technology"], "authorId": "101" },
+//
+//  ... (more blogs) ...
+//
+//   ]
+// }
 const { authors, blogs } = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data.json'), 'utf8'));
 
 // GraphQL resolvers map schema fields to data and logic
