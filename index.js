@@ -34,7 +34,10 @@ const { authors, blogs } = JSON.parse(fs.readFileSync(path.join(process.cwd(), '
 //   id = '2'
 //   authors.find(a => a.id === id) // returns { id: '2', name: 'Grace' }
 //
-// This pattern is used for both authors and blogs to efficiently look up a single item by its unique id.
+// This pattern is used for both authors and blogs to look up a single item by its unique id. 
+//
+// CAVEAT EMPTOR: this is a simple array traversal and is meant to be a "hello world" grade example
+//
 const resolvers = {
   Query: {
     // Returns all blogs in the system as an array.
